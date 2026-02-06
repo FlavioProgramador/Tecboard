@@ -1,15 +1,15 @@
 import "./lista-suspensa.estilos.css";
 
-export function ListaSuspensa() {
+export function ListaSuspensa({items, ...rest}) {
 
   return (
-    <select className="lista-suspensa-form">
-      <option value="" disabled hidden>
+    <select {...rest} className="lista-suspensa-form" defaultValue="">
+      <option value="" disabled >
         Selecione uma opção
       </option>
-      <option value=""></option>
-      <option value=""></option>
-      <option value=""></option>
+      {items.map(function(item) {
+        return <option key={item.id} value={item.nome}>{item.nome}</option>;
+      })}
     </select>
   );
 }
