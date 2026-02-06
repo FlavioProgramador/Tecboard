@@ -37,7 +37,7 @@ function App() {
       capa: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
       tema: temas[0],
       data: new Date(),
-      titulo: "Mulheres no front"
+      titulo: "Mulheres no Front"
     }
   ]
   return (
