@@ -1,10 +1,20 @@
 import "./App.css";
 
-function TituloFormulario( {children} ) {
+function TituloFormulario({ children }) {
+  return <h2>{children}</h2>;
+}
+
+function CampoFormulario({ children }) {
+  return <fieldset>{children}</fieldset>;
+}
+
+function Label({ htmlForm, children }) {
+  return <label htmlFor={htmlForm}>{children}</label>;
+}
+
+function CampoDeEntrada( {...props}) {
   return (
-    <h2>
-      {children}
-    </h2>
+    <input {...props} />
   )
 }
 
@@ -12,10 +22,10 @@ function FormularioDeEvento() {
   return (
     <form className="form-evento">
       <TituloFormulario>Preencha para criar um evento:</TituloFormulario>
-      <fieldset>
-        <label htmlFor="nome">Qual o nome do evento?</label>
-        <input type="text" id="nome" placeholder="Summer dev hits" />
-      </fieldset>
+      <CampoFormulario>
+        <Label htmlForm="nome">Qual o nome do evento?</Label>
+        <CampoDeEntrada type="text" id="nome" placeholder="Summer dev hits" />
+      </CampoFormulario>
     </form>
   );
 }
