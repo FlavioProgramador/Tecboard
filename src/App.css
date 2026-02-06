@@ -1,3 +1,7 @@
+body {
+    background-color: #06151A;
+}
+
 header {
     background-color: #06151A;
     display: flex;
@@ -5,12 +9,3 @@ header {
     padding: 32px;
 }
 
-section {
-    background: linear-gradient(180deg, #17DCB3, #212121);
-    display: flex;
-    justify-content: center;
-}
-
-section img {
-    max-width: 90%;
-}
