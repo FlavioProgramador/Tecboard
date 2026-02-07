@@ -1,28 +1,83 @@
+import { useState } from "react";
 import "./App.css";
-
-function FormularioDeEvento() {
-  return (
-    <form className="form-evento">
-      <h2>Preencha para criar um evento:</h2>
-      <fieldset>
-        <label htmlFor="nome">Qual o nome do evento?</label>
-        <input type="text" id="nome" placeholder="Summer dev hits" />
-      </fieldset>
-    </form>
-  );
-}
+import { Banner } from "./components/Banner";
+import { CardEvento } from "./components/CardEvento";
+import { FormularioDeEvento } from "./components/FormularioDeEvento";
+import { Tema } from "./components/Tema";
 
 function App() {
+  const temas = [
+    {
+      id: 1,
+      nome: "front-end",
+    },
+    {
+      id: 2,
+      nome: "back-end",
+    },
+    {
+      id: 3,
+      nome: "devops",
+    },
+    {
+      id: 4,
+      nome: "inteligência artificial",
+    },
+    {
+      id: 5,
+      nome: "data-science",
+    },
+    {
+      id: 6,
+      nome: "cloud",
+    },
+  ];
+
+  const [eventos, setEventos] = useState([
+    {
+      capa: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
+      tema: temas[0],
+      data: new Date(),
+      titulo: "Mulheres no Front",
+    },
+  ]);
+
+  function AdicionarEvento(evento) {
+    // eventos.push(evento);
+    // console.log("Eventos atuais:", eventos);
+    setEventos([...eventos, evento]);
+  }
+
   return (
     <>
       <main>
         <header>
           <img src="/logo-tecboard.png" alt="Logo Tecboard" />
         </header>
-        <section>
-          <img src="/banner.png" alt="Banner Tecboard" />
+        <Banner />
+        <FormularioDeEvento temas={temas} aoSubmeter={AdicionarEvento} />
+        <section className="container">
+          {temas.map(function (tema) {
+            if (!eventos.some(function(evento) {
+              return evento.tema.id === tema.id;
+            })) {
+              return null;
+            }
+            return (
+              <section key={tema.id}>
+                <Tema tema={tema} />
+                <div className="eventos">
+                  {eventos.filter(function(evento) {
+                    return evento.tema.id == tema.id;
+                  })
+                  .map(function (evento, indice) {
+                    return <CardEvento evento={evento} key={indice} />;
+                  })}
+                </div>
+              </section>
+            );
+          })}
         </section>
-        <FormularioDeEvento />
       </main>
     </>
   );
