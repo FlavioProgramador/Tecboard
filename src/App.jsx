@@ -40,6 +40,13 @@ function App() {
       titulo: "Mulheres no Front"
     }
   ]
+
+function AdicionarEvento(evento) {
+  eventos.push(evento);
+  console.log("Eventos atuais:", eventos);
+
+}
+
   return (
     <>
       <main>
@@ -47,12 +54,19 @@ function App() {
           <img src="/logo-tecboard.png" alt="Logo Tecboard" />
         </header>
         <Banner />
-        <FormularioDeEvento temas={temas} />
+        <FormularioDeEvento 
+          temas={temas} 
+          aoSubmeter={AdicionarEvento} 
+        />
         {temas.map(function (item) {
           return (
             <section key={item.id}>
               <Tema tema={item} />
-              <CardEvento evento={eventos[0]} />
+            {eventos.map(function(item, indice) {
+            return <CardEvento evento={item} key={indice} />
+            })}
+
+              
             </section>
           );
           })
