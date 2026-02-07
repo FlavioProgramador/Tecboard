@@ -59,7 +59,7 @@ function App() {
         <section className="container">
           {temas.map(function (tema) {
             if (!eventos.some(function(evento) {
-              return evento.tema.id == tema.id;
+              return evento.tema.id === tema.id;
             })) {
               return null;
             }

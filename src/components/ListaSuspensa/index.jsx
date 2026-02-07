@@ -3,7 +3,7 @@ import "./lista-suspensa.estilos.css";
 export function ListaSuspensa({items, ...rest}) {
 
   return (
-    <select {...rest} name="temaEvento" className="lista-suspensa-form" defaultValue="">
+    <select {...rest} className="lista-suspensa-form" defaultValue="" required>
       <option value="" disabled >
         Selecione uma opção
       </option>
