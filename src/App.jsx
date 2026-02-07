@@ -38,15 +38,15 @@ function App() {
       capa: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
       tema: temas[0],
       data: new Date(),
-      titulo: "Mulheres no Front"
-    }
-  ])
+      titulo: "Mulheres no Front",
+    },
+  ]);
 
-function AdicionarEvento(evento) {
-  // eventos.push(evento);
-  // console.log("Eventos atuais:", eventos);
-  setEventos([...eventos, evento]);
-}
+  function AdicionarEvento(evento) {
+    // eventos.push(evento);
+    // console.log("Eventos atuais:", eventos);
+    setEventos([...eventos, evento]);
+  }
 
   return (
     <>
@@ -55,23 +55,21 @@ function AdicionarEvento(evento) {
           <img src="/logo-tecboard.png" alt="Logo Tecboard" />
         </header>
         <Banner />
-        <FormularioDeEvento 
-          temas={temas} 
-          aoSubmeter={AdicionarEvento} 
-        />
-        {temas.map(function (item) {
-          return (
-            <section key={item.id}>
-              <Tema tema={item} />
-            {eventos.map(function(item, indice) {
-            return <CardEvento evento={item} key={indice} />
-            })}
-
-              
-            </section>
-          );
-          })
-        }
+        <FormularioDeEvento temas={temas} aoSubmeter={AdicionarEvento} />
+        <section className="container">
+          {temas.map(function (item) {
+            return (
+              <section key={item.id}>
+                <Tema tema={item} />
+                <div className="eventos">
+                  {eventos.map(function (item, indice) {
+                    return <CardEvento evento={item} key={indice} />;
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </section>
       </main>
     </>
   );
