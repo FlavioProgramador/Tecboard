@@ -1,20 +1,66 @@
-<<<<<<< HEAD
 # Tecboard
-=======
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma para criação e organização de eventos de tecnologia por área temática. Projeto desenvolvido junto à [Alura](https://www.alura.com.br/).
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre
 
-## React Compiler
+O Tecboard permite criar eventos e visualizá-los organizados por tema — como Front-end, Back-end, DevOps, Inteligência Artificial, Data Science e Cloud. Ao cadastrar um evento, ele aparece automaticamente na seção do tema correspondente.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Cadastro de eventos com nome, capa (URL de imagem), data e tema
+- Organização automática dos eventos por área temática
+- Exibição dinâmica — seções de temas só aparecem quando possuem eventos
+- Validação de formulário com campos obrigatórios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 4eb8f6e (Criação do projeto)
+## Tecnologias
+
+- **React 19** — com hooks (`useState`) e API `action` para formulários
+- **Vite 7** — build tool e dev server com HMR
+- **CSS modular** — cada componente possui seu próprio arquivo de estilos
+- **ESLint** — linting com plugins para React
+
+## Estrutura do projeto
+
+```
+src/
+├── App.jsx                    # Componente principal com estado e lógica
+├── App.css                    # Estilos globais (container, layout)
+├── main.jsx                   # Ponto de entrada
+├── index.css                  # Reset CSS e fonte base
+└── components/
+    ├── Banner/                # Banner principal da página
+    ├── Botao/                 # Botão reutilizável
+    ├── CampoDeEntrada/        # Input genérico de formulário
+    ├── CampoDeFormulario/     # Fieldset wrapper para campos
+    ├── CardEvento/            # Card de exibição de evento
+    ├── FormularioDeEvento/    # Formulário de criação de evento
+    ├── Label/                 # Label estilizada
+    ├── ListaSuspensa/         # Select dropdown reutilizável
+    ├── Tema/                  # Título da seção temática
+    └── TituloDeFormulario/    # Título do formulário
+```
+
+## Como rodar
+
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
+# Preview do build
+npm run preview
+```
+
+## Fontes
+
+- [Work Sans](https://fonts.google.com/specimen/Work+Sans) — textos gerais
+- [Orbitron](https://fonts.google.com/specimen/Orbitron) — títulos e tags
