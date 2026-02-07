@@ -1,5 +1,5 @@
 import "./label.estilos.css";
 
-export function Label({ htmlForm, children }) {
-  return <label className="label" htmlFor={htmlForm}>{children}</label>;
+export function Label({ htmlFor, children }) {
+  return <label className="label"  htmlFor={htmlFor}>{children}</label>;
 }
