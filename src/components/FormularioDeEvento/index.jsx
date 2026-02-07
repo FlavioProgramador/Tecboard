@@ -9,11 +9,15 @@ import { ListaSuspensa } from "../ListaSuspensa";
 export function FormularioDeEvento({ temas, aoSubmeter }) {
   function aoFormSubmetido(formData) {
     console.log("Ta na hora de criar um novo evento", formData);
+    const tema = temas.find(function(item) {
+      return item.id === Number(formData.get('temaEvento'));
+    });
+    if (!formData.get('nomeEvento') || !formData.get('dataEvento') || !tema) {
+      return;
+    }
     const evento = {
       capa: formData.get('capaEvento'),
-      tema: temas.find(function(item) {
-        return item.id === Number(formData.get('temaEvento'));
-      }),
+      tema: tema,
       data: new Date(formData.get('dataEvento')),
       titulo: formData.get('nomeEvento'),
     };
@@ -31,6 +35,7 @@ export function FormularioDeEvento({ temas, aoSubmeter }) {
             id="nomeEvento"
             name="nomeEvento"
             placeholder="Summer dev hits"
+            required
           />
         </CampoDeFormulario>
         <CampoDeFormulario>
@@ -48,6 +53,7 @@ export function FormularioDeEvento({ temas, aoSubmeter }) {
             id="dataEvento"
             name="dataEvento"
             placeholder="XX/XX/XXXX"
+            required
           />
         </CampoDeFormulario>
         <CampoDeFormulario>
